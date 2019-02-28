@@ -1,6 +1,16 @@
 <?php
+include("includes/classes/Account.php");
+include("includes/classes/Constants.php");
+$account = new Account();
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
+
+function rememberValue($input) {
+    if(isset($_POST[$input])) {
+        echo $_POST[$input];
+    }
+}
+
 ?>
 
 
@@ -37,26 +47,34 @@ include("includes/handlers/login-handler.php");
         <form action="register.php" id="loginForm" method="POST">
             <h2>Create Your Account</h2>
             <p>
+                <?php echo $account->getError(Constants::$usernameLength); ?>
                 <label for="username">Username : </label>
-                <input type="text" id="username" placeholder="eg: todastle" name="username" required>
+                <input type="text" id="username" placeholder="eg: todastle" value="<?php rememberValue('username') ?>" name="username" required>
             </p>
             <p>
+                <?php echo $account->getError(Constants::$firstNameLength); ?>
                 <label for="firstName">First Name : </label>
-                <input type="text" id="firstName" placeholder="eg: Todd" name="firstName" required>
+                <input type="text" id="firstName" placeholder="eg: Todd" value="<?php rememberValue('firstName') ?>" name="firstName" required>
             </p>
             <p>
+                <?php echo $account->getError(Constants::$lastNameLength); ?>
                 <label for="lastName">Last Name : </label>
-                <input type="text" id="lastName" placeholder="eg: Astle" name="lastName" required>
+                <input type="text" id="lastName" placeholder="eg: Astle" value="<?php rememberValue('lastName') ?>" name="lastName" required>
             </p>
             <p>
+                <?php echo $account->getError(Constants::$emailsDoNoMatch); ?>
+                <?php echo $account->getError(Constants::$emailInvalid); ?>
                 <label for="email">Email : </label>
-                <input type="email" id="email" placeholder="eg: todd@abc.com" name="email" required>
+                <input type="email" id="email" placeholder="eg: todd@abc.com" value="<?php rememberValue('email') ?>" name="email" required>
             </p>
             <p>
                 <label for="email2">Confirm Email : </label>
-                <input type="email" id="email2" name="email2" placeholder="re-enter your email" required>
+                <input type="email" id="email2" name="email2" placeholder="re-enter your email" value="<?php rememberValue('email2') ?>" required>
             </p>
             <p>
+                <?php echo $account->getError(Constants::$passwordDoNoMatch); ?>
+                <?php echo $account->getError(Constants::$passwordLength); ?>
+                <?php echo $account->getError(Constants::$passwordAlphanumeric); ?>
                 <label for="password">Password : </label>
                 <input type="password" id="password" name="password" placeholder="Your password" required>
             </p>

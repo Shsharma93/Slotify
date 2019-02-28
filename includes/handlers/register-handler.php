@@ -21,28 +21,26 @@ function sanitizeNames($input)
 }
 
 
+
+
 if (isset($_POST['register'])) {
   echo 'Register button was pressed!';
 
-  $username = sanitizeUsername($_POST['username']);
-  $firstName = sanitizeNames($_POST['firstName']);
-  $lastName = sanitizeNames($_POST['lastName']);
+  $un = sanitizeUsername($_POST['username']);
+  $fn = sanitizeNames($_POST['firstName']);
+  $ln = sanitizeNames($_POST['lastName']);
+  $em = sanitizeNames($_POST['email']);
+  $em2 = sanitizeNames($_POST['email2']);
+  $pw = sanitizePassword($_POST['password']);
+  $pw2 = sanitizePassword($_POST['password2']);
 
-  $email = sanitizeNames($_POST['email']);
-  $email2 = sanitizeNames($_POST['email2']);
-  $password = sanitizePassword($_POST['password']);
-  $password2 = sanitizePassword($_POST['password2']);
+  $wasSuccesful = $account->register($un, $fn, $ln, $em, $em2, $pw, $pw2);
 
-
-  echo $username;
-  echo $lastName;
-  echo $firstName;
-  echo $email;
-  echo $email2;
-  echo $password;
-  echo $password2;
+  if($wasSuccesful) {
+    //echo 'Sign up is succesful';
+    header("Location: index.php");
+  }
+  
 }
-
-
 
 ?>
