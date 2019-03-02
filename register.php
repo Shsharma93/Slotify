@@ -1,7 +1,8 @@
 <?php
+include("includes/config.php");
 include("includes/classes/Account.php");
 include("includes/classes/Constants.php");
-$account = new Account();
+$account = new Account($con);
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
 
@@ -48,6 +49,7 @@ function rememberValue($input) {
             <h2>Create Your Account</h2>
             <p>
                 <?php echo $account->getError(Constants::$usernameLength); ?>
+                <?php echo $account->getError(Constants::$usernameExists); ?>
                 <label for="username">Username : </label>
                 <input type="text" id="username" placeholder="eg: todastle" value="<?php rememberValue('username') ?>" name="username" required>
             </p>
@@ -64,6 +66,7 @@ function rememberValue($input) {
             <p>
                 <?php echo $account->getError(Constants::$emailsDoNoMatch); ?>
                 <?php echo $account->getError(Constants::$emailInvalid); ?>
+                <?php echo $account->getError(Constants::$emailExists); ?>
                 <label for="email">Email : </label>
                 <input type="email" id="email" placeholder="eg: todd@abc.com" value="<?php rememberValue('email') ?>" name="email" required>
             </p>

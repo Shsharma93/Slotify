@@ -1,9 +1,11 @@
 <?php
   class Account {
 
+    private $con;
     private $errorArray;
 
-    public function __construct() {
+    public function __construct($con) {
+      $this->con = $con;
       $this->errorArray = array();
     }
 
@@ -15,7 +17,7 @@
       $this->validatePasswords($pw, $pw2);
 
       if(empty($this->errorArray)) {
-        return true;
+        return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
       } else {
         return false;
       }
@@ -28,6 +30,16 @@
       return "<span class='errorMessage'>$error</span>";
     }
 
+    private function insertUserDetails($un, $fn, $ln, $em, $pw) {
+      $encryptPw = md5($pw);
+      $profilePic = "assets/images/profile-pic/user1.png";
+      $date = date("Y-m-d");
+      
+      $result = mysqli_query($this->con, "INSERT into users values('', '$un', '$fn', '$ln', '$em', '$encryptPw', '$date', '$profilePic')");
+      
+      return $result;
+    }
+
     private function validateUsername($un) {
 
       //checking username length
@@ -37,6 +49,12 @@
       }
 
       //check if username already exists.
+      $checkUsernameQuery = mysqli_query($this->con, "SELECT username from users WHERE username = '$un'");
+
+      if(mysqli_num_rows($checkUsernameQuery) != 0) {
+        array_push($this->errorArray, Constants::$usernameExists);
+        return;
+      }
 
     }
 
@@ -70,6 +88,12 @@
       }
 
       //checking if emaili is already exists
+      $checkEmailQuery = mysqli_query($this->con, "SELECT email from users WHERE email = '$em'");
+
+      if(mysqli_num_rows($checkEmailQuery) != 0) {
+        array_push($this->errorArray, Constants::$emailExists);
+        return;
+      }
       
     }
     
