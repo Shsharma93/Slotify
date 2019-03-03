@@ -1,6 +1,7 @@
 <?php
 
-function sanitizeUsername($input) {
+function sanitizeUsername($input)
+{
   $input = strip_tags($input);
   $input = str_replace(" ", "", $input);
   return $input;
@@ -36,12 +37,10 @@ if (isset($_POST['register'])) {
 
   $wasSuccesful = $account->register($un, $fn, $ln, $em, $em2, $pw, $pw2);
 
-  if($wasSuccesful) {
-    
+  if ($wasSuccesful) {
     //echo 'Sign up is succesful';
+    $_SESSION['userLoggedIn'] = $un;
     header("Location: index.php");
   }
-  
 }
-
-?>
+ 

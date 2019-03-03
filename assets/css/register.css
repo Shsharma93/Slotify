@@ -1,0 +1,113 @@
+#background {
+  background-color: rgb(109, 106, 106);
+  background-image: url(../images/8.jpg);
+  background-position: center;
+  background-size: cover;
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+#loginController * {
+  color: rgb(255, 255, 255);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 1.5em;
+  box-sizing: border-box;
+}
+
+#loginController {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  max-width: 1024 px;
+}
+
+#inputContainer {
+  width: 400px;
+  padding: 45px;
+  float: left;
+  border-right: 1px solid #fff;
+}
+
+#inputContainer h2 {
+  text-align: center; 
+}
+
+#inputContainer input[type="text"],
+#inputContainer input[type="email"],
+#inputContainer input[type="password"] {
+  margin-top: 10px;
+  display: block;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  line-height: 30px;
+}
+
+inputContainer  p {
+  margin-top: 30px;
+}
+
+#inputContainer label {
+  font-size: 15px;
+  margin-top: 20px;
+  color: #fef;
+}
+
+#inputContainer button {
+  width: 100%;
+  color: white;
+  height: 45px;
+  font-size: 18px;
+  border: 1px solid #fff;
+  margin-top: 30px;
+  background-color: transparent;
+  border-radius: 20px;
+  display: block;
+  letter-spacing: 2px;
+}
+
+#inputContainer button:hover {
+  cursor: pointer;
+}
+
+#inputContainer input[type="text"]:focus, 
+#inputContainer input[type="email"]:focus,
+#inputContainer input[type="password"]:focus{
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #fff; 
+}
+
+#inputContainer button:focus {
+  outline: none;
+  border: 2px solid #fff
+}
+
+.hasAccountText {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.hasAccountText span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+  opacity: 0.5;
+}

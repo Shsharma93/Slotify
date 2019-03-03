@@ -1,3 +1,17 @@
+<?php
+include("includes/config.php");
+
+session_destroy();
+
+if (isset($_SESSION['userLoggedIn'])) {
+    $userLoggedIn = $_SESSION['userLoggedIn'];
+} else {
+    header("Location: register.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,4 +26,4 @@
     <h1>Slotify</h1>
 </body>
 
-</html> 
+</htm l> 

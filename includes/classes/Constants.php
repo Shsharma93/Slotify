@@ -13,7 +13,6 @@ class Constants {
   public static $lastNameLength = "Last Name must be between 2 and 25 characters.";
   public static $usernameLength = "Username must be between 5 and 25 characters.";
   public static $usernameExists = "Username already exists.";
-
+  public static $loginFailed = "Username or Password do not match";
 }
-
-?>
+ 
