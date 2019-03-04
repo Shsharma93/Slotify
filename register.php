@@ -30,22 +30,42 @@ function rememberValue($input)
 </head>
 
 <body>
+    <?php
+
+    if (isset($_POST['register'])) {
+        echo '<script>
+            $(document).ready(function() {
+                $("#loginForm").hide();
+                $("#registerForm").show();
+            });
+        </script>';
+    } else {
+        echo '<script>
+            $(document).ready(function() {
+                $("#loginForm").show();
+                $("#registerForm").hide();
+            });
+        </script>';
+    }
+
+    ?>
+
     <div id="background">
         <div id="loginController">
             <div id="inputContainer">
                 <form action="register.php" id="loginForm" method="POST">
-                    <h2>Login Form</h2>
+                    <h2>Log In to your Slotify account</h2>
                     <p>
                         <?php echo $account->getError(Constants::$loginFailed); ?>
                         <label for="loginUsername">Username </label>
-                        <input type="text" id="loginUsername" placeholder="eg: toddastle" name="loginUsername" required>
+                        <input type="text" id="loginUsername" placeholder="eg: toddastle" name="loginUsername" value="<?php rememberValue('loginUsername') ?>" required>
                     </p>
                     <p>
                         <label for="loginPassword">Password </label>
                         <input type="password" id="loginPassword" placeholder="enter your password" name="loginPassword" required>
                     </p>
 
-                    <button type="submit" name="loginButton">LOG IN</button>
+                    <button type="submit" id="loginButton" name="loginButton">LOG IN</button>
 
 
                     <div class="hasAccountText">
@@ -106,8 +126,18 @@ function rememberValue($input)
                 </form>
             </div>
 
+            <div id="loginText">
+                <h1>Get great music, right now</h1>
+                <h2>Listen to loads of songs for free.</h2>
+                <ul>
+                    <li>Discover music you'll fall in love with</li>
+                    <li>Create your own playlists</li>
+                    <li>Follow artists to keep up to date</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </body>
 
-</html> 
+</ html> 

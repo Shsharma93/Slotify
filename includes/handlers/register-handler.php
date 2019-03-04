@@ -25,8 +25,7 @@ function sanitizeNames($input)
 
 
 if (isset($_POST['register'])) {
-  echo 'Register button was pressed!';
-
+  
   $un = sanitizeUsername($_POST['username']);
   $fn = sanitizeNames($_POST['firstName']);
   $ln = sanitizeNames($_POST['lastName']);
